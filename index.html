@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Shrek Party — тематический ивент во вселенной Шрека</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shrek Party — двухчасовое погружение во вселенную Шрека: дискотека, мем-челлендж с выходом из туалетной кабинки, аксессуары, печенье в форме персонажей и многое другое.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1a0033 0, #03030a 40%, #020308 100%);
+      color: #fefefe;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px 80px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(90deg, rgba(8,0,15,0.9), rgba(8,12,4,0.9));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-text-main {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 18px;
+    }
+    .logo-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+    .nav {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    .nav a {
+      opacity: .8;
+      transition: opacity .2s, transform .2s;
+    }
+    .nav a:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      background: radial-gradient(circle at 0 0, #f6ff7a, #8bff3c 35%, #4bff8b 100%);
+      color: #151515;
+      box-shadow: 0 0 18px rgba(139,255,60,0.6);
+      transition: transform .17s ease-out, box-shadow .17s ease-out;
+      white-space: nowrap;
+    }
+    .btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 25px rgba(139,255,60,0.9);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 40px 0 60px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: rgba(15, 245, 120, 0.08);
+      border: 1px solid rgba(159, 255, 126, 0.55);
+      padding: 4px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 14px;
+      color: #c4ff8a;
+    }
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #9fff7e;
+      box-shadow: 0 0 10px #9fff7e;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      text-shadow: 0 0 16px rgba(255,0,255,0.5);
+    }
+    .hero-title span {
+      color: #9fff7e;
+    }
+    .hero-sub {
+      font-size: 15px;
+      max-width: 460px;
+      opacity: 0.9;
+      margin-bottom: 18px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+      font-size: 12px;
+    }
+    .hero-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(16, 2, 28, 0.8);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .hero-note {
+      font-size: 12px;
+      opacity: .7;
+    }
+    .hero-image {
+      justify-self: center;
+    }
+    .hero-image-inner {
+      border-radius: 26px;
+      padding: 18px;
+      background: radial-gradient(circle at 10% 0, rgba(255,0,200,0.5), transparent 60%),
+                  radial-gradient(circle at 100% 100%, rgba(134,255,90,0.7), transparent 60%),
+                  #06000b;
+      box-shadow: 0 0 40px rgba(144,255,120,0.4);
+    }
+    .hero-image-inner .label {
+      margin-top: 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      text-align: center;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 52px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .section-title span {
+      color: #9fff7e;
+    }
+    .section-lead {
+      font-size: 14px;
+      opacity: .9;
+      max-width: 640px;
+      margin-bottom: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(155,255,113,0.12), rgba(24,7,43,0.95));
+      border-radius: 18px;
+      padding: 16px 18px 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+      font-size: 14px;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .card-tagline {
+      font-size: 12px;
+      opacity: .7;
+      margin-bottom: 6px;
+    }
+    ul {
+      padding-left: 18px;
+      font-size: 14px;
+    }
+    ul li { margin-bottom: 4px; }
+
+    /* TIMELINE */
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      border-left: 2px dashed rgba(159,255,126,0.5);
+      margin-left: 6px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #9fff7e;
+      box-shadow: 0 0 12px #9fff7e;
+    }
+    .timeline-time {
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: .7;
+      letter-spacing: .12em;
+    }
+    .timeline-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .timeline-text {
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    /* PRICING */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .price-card {
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.1), rgba(21,5,46,0.98));
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 20px;
+      padding: 18px 20px 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+    .price-name {
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+    .price-info {
+      font-size: 13px;
+      opacity: .85;
+      margin-bottom: 10px;
+    }
+    .price-cost {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #9fff7e;
+    }
+    .price-note {
+      font-size: 12px;
+      opacity: .75;
+      margin-bottom: 12px;
+    }
+    .price-list {
+      padding-left: 18px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    /* BOOKING / CONTACT */
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .contact-box {
+      background: radial-gradient(circle at 0 0, rgba(159,255,126,0.18), rgba(17,4,35,0.96));
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(159,255,126,0.6);
+      font-size: 14px;
+    }
+    .contact-row {
+      margin-bottom: 8px;
+    }
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: .6;
+    }
+    .contact-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    form {
+      display: grid;
+      gap: 10px;
+    }
+    label {
+      font-size: 13px;
+    }
+    input, textarea {
+      margin-top: 4px;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.5);
+      color: #fefefe;
+      font-family: inherit;
+      font-size: 13px;
+    }
+    textarea { min-height: 80px; resize: vertical; }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 16px 26px;
+      font-size: 11px;
+      text-align: center;
+      opacity: .7;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+        padding-top: 32px;
+      }
+      .hero-image { order: -1; }
+      .nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .grid-2 {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .booking-wrapper {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <!-- Подставь путь к своему логотипу агентства -->
+      <!-- <img src="logo-keks.png" alt="КЕКС Ивент-агентство" style="width:42px;height:auto;border-radius:12px;"> -->
+      <div>
+        <div class="logo-text-main">КЕКС</div>
+        <div class="logo-text-sub">ивент-агентство</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#about">О событии</a>
+      <a href="#program">Программа</a>
+      <a href="#inside">Что внутри</a>
+      <a href="#format">Кому подходит</a>
+      <a href="#booking">Бронь</a>
+    </nav>
+    <a href="#booking" class="btn">Забронировать</a>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <section class="hero">
+    <div>
+      <div class="tag">
+        <span class="tag-dot"></span>
+        <span>Новая тематическая вечеринка</span>
+      </div>
+      <h1 class="hero-title">Shrek <span>Party</span></h1>
+      <p class="hero-sub">
+        Двухчасовое путешествие во вселенную Шрека: болото-дискотека, легендарный мем-челлендж с выходом из туалетной кабинки, 
+        аксессуары персонажей, печенье в форме героев и море зелёного фана.
+      </p>
+      <div class="hero-badges">
+        <div class="hero-badge">Продолжительность: 2 часа</div>
+        <div class="hero-badge">Формат: вечеринка + шоу</div>
+        <div class="hero-badge">Возраст: 8+ / взрослые</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#booking" class="btn">Выбрать дату Shrek Party</a>
+        <div class="hero-note">Ограниченное количество дат — бронируем заранее.</div>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-image-inner">
+        <!-- сюда можно добавить иллюстрацию Шрека/болота, на которую у вас есть права -->
+        <img src="shrek-party-poster.png" alt="Постер Shrek Party">
+        <div class="label">Концепт-арт афиши Shrek Party</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title"><span>О событии</span> Shrek Party</h2>
+    <p class="section-lead">
+      Представьте, что болото Шрека перенесли прямо в ваше пространство. 
+      Участники попадают в атмосферу зелёной огр-вечеринки: неоновые огни, 
+      саундтрек из любимых треков, мемы и шутки, которые понимают все.
+      <br><br>
+      Каждый гость получает тематический аксессуар, чтобы на время ивента стать частью сказочного мира: 
+      ушки, короны, маски персонажей и другие детали, которые круто смотрятся на фото и видео.
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Главная фишка — мем-челлендж</div>
+        <div class="card-tagline">Тот самый момент выхода из туалетной кабинки</div>
+        <p>
+          Мы воссоздаём классический мем: специальная кабина, свет, дым и правильный трек. 
+          Каждый участник по очереди делает свой эффектный выход под музыку, а мы снимаем это 
+          на видео — идеально для Reels и TikTok. В конце вечера выбираем самый легендарный выход.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-title">Аксессуары и угощения из вселенной Шрека</div>
+        <p>
+          На входе участникам выдаются тематические аксессуары: ушки, очки, броши, значки и другие детали. 
+          На сладком столе — печенье в форме персонажей, зелёные десерты и лимонады болотно-неонового цвета.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="program">
+    <h2 class="section-title">Программа <span>2-часовой</span> вечеринки</h2>
+    <div class="grid-2">
+      <div>
+        <ul class="timeline">
+          <li class="timeline-item">
+            <div class="timeline-time">0:00 — 0:15</div>
+            <div class="timeline-title">Заселение на болото</div>
+            <p class="timeline-text">
+              Встречаем гостей, раздаём аксессуары из вселенной Шрека, 
+              делаем первые фото у тематической фотозоны.
+            </p>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-time">0:15 — 0:30</div>
+            <div class="timeline-title">Погружение в мир Шрека</div>
+            <p class="timeline-text">
+              Ведущий знакомит с легендой вечеринки, делит на команды персонажей, 
+              проводит первые лёгкие конкурсы и разминку.
+            </p>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-time">0:30 — 1:05</div>
+            <div class="timeline-title">Болото-дискотека</div>
+            <p class="timeline-text">
+              Танцы под хитовые треки, мини-баттлы, интерактивы с ведущим и DJ. 
+              Всё — в стиле сказочного болота и яркого неона.
+            </p>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-time">1:05 — 1:30</div>
+            <div class="timeline-title">Мем-челлендж: выход из кабинки</div>
+            <p class="timeline-text">
+              Каждый участник делает свой эффектный выход из «туалетной кабинки» 
+              под фирменную музыку. Снимаем это на видео, добавляем спецэффекты 
+              и делаем общий монтаж после ивента.
+            </p>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-time">1:30 — 1:50</div>
+            <div class="timeline-title">Игры и конкурсы вселенной Шрека</div>
+            <p class="timeline-text">
+              Командные задания, квиз по мультфильму, шуточные испытания от Огра, Осла и друзей. 
+              Победители получают тематические призы.
+            </p>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-time">1:50 — 2:00</div>
+            <div class="timeline-title">Финал и общий танец</div>
+            <p class="timeline-text">
+              Финальный «болотный» флешмоб, общая фотография, вручение призов и прощальный тост за счастливый конец сказки.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Гибкий сценарий</div>
+        <p>
+          Мы адаптируем программу под формат: день рождения, корпоратив, выпускной, 
+          вечеринка для подростков или взрослых. Отдельно можно добавить:
+        </p>
+        <ul>
+          <li>фото- и видеосъёмку с монтажом мем-ролика;</li>
+          <li>дополнительный час дискотеки;</li>
+          <li>анимацию для детей младшего возраста;</li>
+          <li>индивидуальный бренд-декор под вашу компанию.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="inside">
+    <h2 class="section-title">Что <span>включено</span> в Shrek Party</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Атмосфера</div>
+        <ul>
+          <li>Оформление в стиле болота и замка;</li>
+          <li>Неоновый свет и дым-эффекты;</li>
+          <li>Тематическая фотозона.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Аксессуары</div>
+        <ul>
+          <li>Ушки, маски и очки персонажей;</li>
+          <li>Бейджи с ролями и именами;</li>
+          <li>Мелкие сувениры-напоминания о вечеринке.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Мем-челлендж</div>
+        <ul>
+          <li>Специальная «туалетная кабинка» для выхода;</li>
+          <li>Музыка из знаменитого мема;</li>
+          <li>Съёмка и монтаж короткого вирусного ролика.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Еда и сладости</div>
+        <ul>
+          <li>Печенье в форме персонажей;</li>
+          <li>Зелёные десерты/капкейки (по согласованию);</li>
+          <li>Лимонады и напитки болотного цвета.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="format">
+    <h2 class="section-title"><span>Для кого</span> подойдёт Shrek Party</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Детские и подростковые праздники</div>
+        <p>
+          День рождения, выпускной, встреча класса — дети и подростки 
+          обожают мемы и узнаваемые персонажи. Мы сделаем программу динамичной, 
+          но безопасной и комфортной по возрасту.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-title">Корпоративы и вечеринки 18+</div>
+        <p>
+          Необычный формат корпоративной вечеринки, тимбилдинга или 
+          студенческого мероприятия. Больше юмора, танцев и мем-контента, 
+          который разойдётся по сторис.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title">Тарифы <span>Shrek Party</span></h2>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="price-name">«Болото-лайт»</div>
+        <div class="price-info">Для небольших компаний и дней рождения.</div>
+        <div class="price-cost">от 00 000 ₽</div>
+        <ul class="price-list">
+          <li>Продолжительность: 2 часа;</li>
+          <li>Ведущий + базовое музыкальное оформление;</li>
+          <li>Аксессуары для гостей;</li>
+          <li>Мем-челлендж и съёмка на телефон.</li>
+        </ul>
+        <div class="price-note">Точная стоимость зависит от количества гостей и площадки.</div>
+        <a href="#booking" class="btn">Запросить расчёт</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">«Полное болото»</div>
+        <div class="price-info">Максимальный эффект присутствия во вселенной Шрека.</div>
+        <div class="price-cost">от 00 000 ₽</div>
+        <ul class="price-list">
+          <li>Полная 2-часовая программа + доп.час дискотеки;</li>
+          <li>Ведущий, DJ, дым и световые эффекты;</li>
+          <li>Расширенный набор аксессуаров и декора;</li>
+          <li>Печенье-персонажи и сладкий стол (по договорённости);</li>
+          <li>Профессиональная фото/видеосъёмка мем-челленджа.</li>
+        </ul>
+        <div class="price-note">Подойдёт для корпоративов, выпускных и больших праздников.</div>
+        <a href="#booking" class="btn">Забронировать</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2 class="section-title">Забронировать <span>Shrek Party</span></h2>
+    <div class="booking-wrapper">
+      <div>
+        <p class="section-lead">
+          Оставьте заявку — мы свяжемся с вами, подберём площадку, 
+          адаптируем программу под ваш возраст и формат и поможем с декором.
+        </p>
+        <form>
+          <label>
+            Ваше имя
+            <input type="text" name="name" placeholder="Как к вам обращаться?">
+          </label>
+          <label>
+            Телефон или Telegram
+            <input type="text" name="contact" placeholder="+7 ___ ___-__-__ / @username">
+          </label>
+          <label>
+            Предполагаемая дата и формат
+            <textarea name="details" placeholder="Например: 15 марта, день рождения, 15 человек, формат 10–15 лет."></textarea>
+          </label>
+          <button type="submit" class="btn">Отправить заявку</button>
+        </form>
+      </div>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          <div class="contact-label">Организатор</div>
+          <div class="contact-value">КЕКС — ивент-агентство</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Телефон</div>
+          <div class="contact-value">+7 (000) 000-00-00</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Telegram / WhatsApp</div>
+          <div class="contact-value">@shrekparty_manager</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Город</div>
+          <div class="contact-value">Уточните свой город при бронировании</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Примечание</div>
+          <div class="contact-value">
+            Мы используем оригинальную идею вселенной Шрека в формате фан-ивента. 
+            Дизайн и программа адаптируются под ваши задачи и площадку.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © <!-- подставь нужный год --> 2025 Ивент-агентство «КЕКС». Shrek Party — фан-ивент во вдохновении от вселенной Шрека.
+</footer>
+
+</body>
+</html>
